@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INOVASI FILTRASI CERDAS BERBASIS IoT PADA INDUSTRI TERNAK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/web.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='bahan/Artboard 1.png') }}" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Navbar atas -->
+    <nav class="navbar navbar-expand-lg rounded-pill sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{{ url_for('static', filename='bahan/Artboard 1.png') }}" alt="Logo" width="60"  class="d-inline-block align-text-top">
+          <strong>FILTRASI CERDAS BERBASIS IoT</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><img src="{{ url_for('static', filename='bahan/arrow-down.svg') }}"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"><strong>Profil</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><strong>Informasi</strong></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <strong>Alat</strong> 
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Elektro Koagulasi</a></li>
+                <li><a class="dropdown-item" href="#">Sensor</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">IoT</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <!-- Logo Overlay (logo di atas teks) -->
+      <div class="logo-overlay">
+        <div class="logo-item">
+          <img src="{{ url_for('static', filename='bahan/3684434291-removebg-preview.png') }}" alt="Logo kampus merdeka">
+        </div>
+        <div class="logo-item">
+          <img src="{{ url_for('static', filename='bahan/Universitas-Trunojoyo-Madura-Logo.png') }}" alt="Logo UTM">
+        </div>
+        <div class="logo-item">
+          <img src="{{ url_for('static', filename='bahan/pngwing.com.png') }}" alt="Logo BUMN">
+        </div>
+        <div class="logo-item">
+          <img src="{{ url_for('static', filename='bahan/pngwing.com (1).png') }}" alt="Logo Telkom">
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <h1>SELAMAT DATANG DI HALAMAN PELESTARIAN LINGKUNGAN</h1>
+        <p>INOVASI FILTRASI CERDAS BERBASIS IoT UNTUK PEMISAH DARAH UNGGAS DAN AIR PADA INDUSTRI TERNAK</p>
+        <p>Halaman web IoT untuk memantau kualitas dan keberhasilan alat filter darah</p>
+        <a class="btn btn-outline-warning" href="{{ url_for('index_page') }}" role="button">Link</a>
+    </div>
+    
+    </div>
+
+    <!-- Footer / Bawah Section -->
+    <div class="features">
+      <div class="feature">
+        <img src="{{ url_for('static', filename='bahan/E_SDG_Icons-11.jpg') }}" alt="sdg11">
+        <h3>Kota dan pemukiman yang berkelanjutan</h3>
+        <p>Optimize inputs such as water, fertilizers or pesticides and save costs while increasing crop quality.</p>
+      </div>
+      <div class="feature">
+        <img src="{{ url_for('static', filename='bahan/E_SDG_Icons-12.jpg') }}" alt="sdg12">
+        <h3>Konsumsi dan Produksi yang bertanggung jawab</h3>
+        <p>Make efficient decisions based on data, leading to semi-automation of agro processes and the transition from conventional to specialized work.</p>
+      </div>
+    </div>
+
+    <!-- Spek Section -->
+    <div class="spek1">
+      <div class="spek">
+        <img src="{{ url_for('static', filename='bahan/iot.png') }}" alt="Telematics">
+        <h3>IoT Sensor</h3>
+      </div>
+      <div class="spek">
+        <img src="{{ url_for('static', filename='bahan/environmental-regulations.png') }}" alt="Variable Applications">
+        <h3>Environmentally Friendly</h3>
+      </div>
+      <div class="spek">
+        <img src="{{ url_for('static', filename='bahan/real-time-strategy.png') }}" alt="IoT Sensors">
+        <h3>Realtime</h3>
+      </div>
+    </div>
+
+    <!-- Berita Section -->
+    <div class="beritaatas">
+      <h1>Berita</h1>
+    </div>
+    <div class="berita">
+      <div class="isiberita">
+        <div class="card" style="width: 30rem;">
+          <div class="card-body">
+            <h5 class="card-title">Parah, Sungai di Mojokerto Ini Tertutup Limbah Usus Ayam</h5>
+            <img src="https://a-cdn.sindonews.net/dyn/732/content/2019/11/13/174/1458468/parah-sungai-di-mojokerto-ini-tertutup-limbah-usus-ayam-73K-thumb.jpg" class="card-img-top" alt="Sungai di Mojokerto">
+            <p class="card-text">MOJOKERTO - Warga Desa Modopuro, Kecamatan Mojosari, Kabupaten Mojokerto resah dengan bau tak sedap yang berasal dari sungai ledeng yang tercemar limbah pembuangan sisa pemotongan usus ayam dan sampah.</p>
+            <a href="https://daerah.sindonews.com/berita/1458468/174/parah-sungai-di-mojokerto-ini-tertutup-limbah-usus-ayam" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="{{ url_for('static', filename='bahan/LOGO-5th-Innovillage-2024.webp') }}" alt="INNOVILLAGE Logo">
+        <div class="footer-logos">
+          <img src="{{ url_for('static', filename='bahan/pngwing.com.png') }}" alt="BUMN Logo">
+          <img src="{{ url_for('static', filename='bahan/Universitas-Trunojoyo-Madura-Logo.png') }}" alt="UTM Logo">
+          <img src="{{ url_for('static', filename='bahan/pngwing.com (1).png') }}" alt="Telkom Indonesia Logo">
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Narahubung</h3>
+        <p>Email: <a href="rumestime@gmail.com">rumestime@gmail.com</a></p>
+        <p>As'ad Bahauddin Ahmad - 085993270224</p>
+      </div>
+
+      <div class="footer-links">
+        <h3>Link Terkait</h3>
+        <ul>
+          <li><a href="#">Profil</a></li>
+          <li><a href="#">Informasi</a></li>
+          <li><a href="web.html">Alat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h3>Social Media</h3>
+        <a href="#"><img src="{{ url_for('static', filename='bahan/youtube.png') }}" alt="YouTube"></a>
+        <a href="#"><img src="{{ url_for('static', filename='bahan/instagram.png') }}" alt="Instagram"></a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS (Script) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

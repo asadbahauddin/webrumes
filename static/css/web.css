@@ -1,0 +1,261 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background-image: url('WhatsApp Image 2025-02-22 at 10.57.33_cf0bbee3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Logo Overlay */
+.logo-overlay {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    z-index: 2;
+}
+
+.logo-item {
+    text-align: center;
+    flex: 1;
+}
+
+.logo-item img {
+    width: 100px;  /* Ukuran logo diatur menjadi lebih besar */
+    margin-bottom: 10px;
+    opacity: 0.8; /* Transparansi */
+}
+
+.telkom-logo {
+    width: 150px; /* Logo Telkom diperbesar */
+    opacity: 1; /* Menghilangkan transparansi */
+}
+
+/* Hero Content */
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeIn 3s ease-out;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.feature {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Spek Section */
+.spek1 {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.spek {
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spek img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.spek h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Berita Section */
+.beritaatas {
+    text-align: center;
+    padding: 40px;
+}
+
+.berita {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.isiberita {
+    max-width: 800px;
+    width: 100%;
+}
+
+.card {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Footer Styling */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    background-color: #f4f4f4;
+    flex-wrap: wrap;
+}
+
+.footer-logo img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer-contact h3, .footer-links h3, .footer-social h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-contact p, .footer-links ul {
+    font-size: 1rem;
+    color: #777;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links a {
+    color: #f44336;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a img {
+    width: 30px;
+    margin: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo img {
+        width: 100px;
+    }
+
+    .footer-logo,
+    .footer-contact,
+    .footer-links,
+    .footer-social {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .features {
+        flex-direction: column;
+    }
+
+    .spek1 {
+        flex-direction: column;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

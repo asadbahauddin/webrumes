@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INOVASI FILTRASI CERDAS BERBASIS IoT PADA INDUSTRI TERNAK</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/monitoring.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='bahan/Artboard 1.png') }}" type="image/icon type">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- Navbar atas -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-pill sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('web') }}">
+        <img src="{{ url_for('static', filename='bahan/Artboard 1.png') }}" alt="Logo" width="60" class="d-inline-block align-text-top">
+        <strong>FILTRASI CERDAS BERBASIS IoT</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><img src="{{ url_for('static', filename='bahan/arrow-down.svg') }}"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('web') }}"><strong>Profil</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('web') }}"><strong>Informasi</strong></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <strong>Alat</strong>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ url_for('web') }}">Elektro Koagulasi</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('web') }}">Sensor</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ url_for('web') }}">IoT</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <div class="tulisa_atas text-center mb-4">
+      <h1>Hasil Monitoring</h1>
+    </div>
+
+    <!-- Kotak monitoring -->
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <h2 class="card-header">TDS</h2>
+          <p id="tds" class="card-body">Loading...</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <h2 class="card-header">Turbidity</h2>
+          <p id="turbidity" class="card-body">Loading...</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <h2 class="card-header">pH</h2>
+          <p id="ph" class="card-body">Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="recent-movement mt-5">
+      <h2>Grafik Nilai Monitoring</h2>
+      <div class="charts">
+        <canvas id="sensorChart" width="800" height="400"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('sensorChart').getContext('2d');
+    const sensorChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],  // Label data waktu
+        datasets: [
+          {
+            label: 'TDS',
+            data: [],  // Data TDS
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.4
+          },
+          {
+            label: 'Turbidity',
+            data: [],  // Data Turbidity
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.4
+          },
+          {
+            label: 'pH',
+            data: [],  // Data pH
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 2,
+            fill: false,
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    function updateChart(data) {
+      const currentTime = new Date().toLocaleTimeString();  // Waktu saat data diterima
+      sensorChart.data.labels.push(currentTime);  // Menambahkan label waktu
+
+      sensorChart.data.datasets[0].data.push(data.TDS);  // TDS
+      sensorChart.data.datasets[1].data.push(data.Turbidity);  // Turbidity
+      sensorChart.data.datasets[2].data.push(data.pH);  // pH
+
+      const maxDataPoints = 30;  
+      if (sensorChart.data.labels.length > maxDataPoints) {
+        sensorChart.data.labels.shift();
+        sensorChart.data.datasets.forEach((dataset) => dataset.data.shift());
+      }
+
+      sensorChart.update();  // Update grafik
+
+      document.getElementById('tds').innerText = data.TDS;  
+      document.getElementById('turbidity').innerText = data.Turbidity;
+      document.getElementById('ph').innerText = data.pH;
+    }
+
+    function fetchData() {
+      fetch('/get_data')  // Mengambil data dari endpoint '/get_data'
+        .then(response => response.json())
+        .then(data => {
+          console.log('Data diterima:', data);  // Menampilkan data di konsol
+          updateChart(data);
+        })
+        .catch(error => console.error('Error:', error));  // Menangani error
+    }
+
+    fetchData();  // Ambil data pertama kali saat halaman dimuat
+    setInterval(fetchData, 60000);  // Ambil data setiap 1 menit
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer bg-light py-4">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between">
+        <div class="footer-logo mb-3 mb-md-0">
+          <img src="{{ url_for('static', filename='bahan/LOGO-5th-Innovillage-2024.webp') }}" alt="INNOVILLAGE Logo" width="150">
+          <div class="footer-logos">
+            <img src="{{ url_for('static', filename='bahan/pngwing.com.png') }}" alt="BUMN Logo" width="50">
+            <img src="{{ url_for('static', filename='bahan/Universitas-Trunojoyo-Madura-Logo.png') }}" alt="UTM Logo" width="50">
+            <img src="{{ url_for('static', filename='bahan/pngwing.com (1).png') }}" alt="Telkom Indonesia Logo" width="50">
+          </div>
+        </div>
+
+        <div class="footer-contact mb-3 mb-md-0">
+          <h3>Narahubung</h3>
+          <p>Email: <a href="mailto:rumestime@gmail.com">rumestime@gmail.com</a></p>
+          <p>As'ad Bahauddin Ahmad - 085993270224</p>
+        </div>
+
+        <div class="footer-links mb-3 mb-md-0">
+          <h3>Link Terkait</h3>
+          <ul>
+            <li><a href="{{ url_for('web') }}">Profil</a></li>
+            <li><a href="{{ url_for('web') }}">Informasi</a></li>
+            <li><a href="{{ url_for('web') }}">Alat</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h3>Social Media</h3>
+          <a href="#"><img src="{{ url_for('static', filename='bahan/youtube.png') }}" alt="YouTube" width="30"></a>
+          <a href="#"><img src="{{ url_for('static', filename='bahan/instagram.png') }}" alt="Instagram" width="30"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
